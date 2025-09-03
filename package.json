@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx serve .",
     "dev": "npx live-server .",
-    "build": "echo 'No build step required for vanilla HTML/CSS/JS'",
+    "build": "mkdir -p dist && cp -r *.html *.css *.js dist/ 2>/dev/null || echo 'Static files copied'",
     "test": "echo 'No tests specified yet'"
   },
   "keywords": [
@@ -23,7 +23,8 @@
   "license": "MIT",
   "devDependencies": {
     "live-server": "^1.2.2",
-    "serve": "^14.2.1"
+    "serve": "^14.2.1",
+    "turbo": "^2.0.0"
   },
   "engines": {
     "node": ">=14.0.0"
