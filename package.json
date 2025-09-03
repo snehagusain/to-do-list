@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx serve .",
     "dev": "npx live-server .",
-    "build": "echo 'Static files ready for deployment'",
+    "build": "mkdir -p public && cp *.html *.css *.js public/",
     "test": "echo 'No tests specified yet'"
   },
   "keywords": [
