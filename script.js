@@ -54,9 +54,10 @@ class TodoApp {
   }
   
   setupTheme() {
-    // Load saved theme or default to dark theme for GitHub look
+    // Load saved theme or keep the initial dark theme set in HTML
     const savedTheme = localStorage.getItem('github-todo-theme');
-    const initialTheme = savedTheme || 'dark'; // Default to dark theme
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const initialTheme = savedTheme || currentTheme || 'dark'; // Use saved, current, or default to dark
     
     this.setTheme(initialTheme);
     
