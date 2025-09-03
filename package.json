@@ -1,0 +1,39 @@
+{
+  "name": "github-todo-list",
+  "version": "1.0.0",
+  "description": "A simple, elegant todo list app inspired by GitHub's design system",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server .",
+    "build": "echo 'No build step required for vanilla HTML/CSS/JS'",
+    "test": "echo 'No tests specified yet'"
+  },
+  "keywords": [
+    "todo",
+    "todolist",
+    "github",
+    "vanilla-js",
+    "css",
+    "html",
+    "productivity",
+    "task-management"
+  ],
+  "author": "GitHub Todo List App",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/github-todo-list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/github-todo-list/issues"
+  },
+  "homepage": "https://github.com/username/github-todo-list#readme"
+}

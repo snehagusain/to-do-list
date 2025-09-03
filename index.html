@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Todo List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=-apple-system,BlinkMacSystemFont,Segoe+UI,Helvetica,Arial,sans-serif&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="header-title">
+                    <svg class="octicon" height="32" viewBox="0 0 24 24" version="1.1" width="32">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14l-5-5 1.41-1.41L14 14.17l7.59-7.59L23 8l-9 9z"/>
+                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                    </svg>
+                    Todo List
+                </h1>
+                <button class="theme-toggle" id="themeToggle">
+                    <svg class="sun-icon" width="16" height="16" viewBox="0 0 16 16">
+                        <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                    </svg>
+                    <svg class="moon-icon" width="16" height="16" viewBox="0 0 16 16">
+                        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Add Todo Form -->
+            <div class="add-todo-form">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        class="form-control" 
+                        placeholder="What needs to be done?"
+                        maxlength="255"
+                    />
+                    <button type="button" id="addTodoBtn" class="btn btn-primary">
+                        Add Todo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Todo Stats -->
+            <div class="todo-stats">
+                <div class="stats-item">
+                    <span class="stats-count" id="totalCount">0</span>
+                    <span class="stats-label">Total</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-count" id="activeCount">0</span>
+                    <span class="stats-label">Active</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-count" id="completedCount">0</span>
+                    <span class="stats-label">Completed</span>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">
+                    <svg width="16" height="16" viewBox="0 0 16 16" class="octicon">
+                        <path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16zm0-1.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zM4 8a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"></path>
+                    </svg>
+                    All
+                </button>
+                <button class="filter-tab" data-filter="active">
+                    <svg width="16" height="16" viewBox="0 0 16 16" class="octicon">
+                        <path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16zm0-1.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13z"></path>
+                    </svg>
+                    Active
+                </button>
+                <button class="filter-tab" data-filter="completed">
+                    <svg width="16" height="16" viewBox="0 0 16 16" class="octicon">
+                        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+                    </svg>
+                    Completed
+                </button>
+            </div>
+
+            <!-- Todo List -->
+            <div class="todo-list-container">
+                <ul id="todoList" class="todo-list">
+                    <!-- Todos will be dynamically added here -->
+                </ul>
+                <div id="emptyState" class="empty-state">
+                    <svg width="45" height="45" viewBox="0 0 24 24" class="empty-icon">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <h3>No todos yet</h3>
+                    <p>Add your first todo above to get started!</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

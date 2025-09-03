@@ -1,0 +1,557 @@
+/* GitHub-inspired Todo List Styles */
+
+:root {
+  /* Light theme colors (GitHub default) */
+  --color-canvas-default: #ffffff;
+  --color-canvas-subtle: #f6f8fa;
+  --color-border-default: #d0d7de;
+  --color-border-muted: #d8dee4;
+  --color-fg-default: #24292f;
+  --color-fg-muted: #656d76;
+  --color-fg-subtle: #6e7781;
+  --color-accent-fg: #0969da;
+  --color-accent-emphasis: #0969da;
+  --color-success-fg: #1a7f37;
+  --color-success-emphasis: #2da44e;
+  --color-danger-fg: #cf222e;
+  --color-danger-emphasis: #da3633;
+  --color-attention-fg: #9a6700;
+  --color-attention-emphasis: #d1242f;
+  --color-done-fg: #8250df;
+  --color-done-emphasis: #8250df;
+  --color-btn-bg: #f6f8fa;
+  --color-btn-border: #d0d7de;
+  --color-btn-hover-bg: #f3f4f6;
+  --color-btn-hover-border: #c7c7c7;
+  --color-btn-active-bg: #ebeef2;
+  --color-btn-primary-bg: #2da44e;
+  --color-btn-primary-hover-bg: #2c974b;
+  --color-btn-primary-border: #1a7f37;
+  --color-input-bg: #ffffff;
+  --color-input-border: #d0d7de;
+  --color-input-focus-border: #0969da;
+  --shadow-small: 0 1px 0 rgba(31, 35, 40, 0.04);
+  --shadow-medium: 0 3px 6px rgba(140, 149, 159, 0.15);
+  --shadow-large: 0 8px 24px rgba(140, 149, 159, 0.2);
+}
+
+[data-theme="dark"] {
+  /* Dark theme colors (GitHub dark) */
+  --color-canvas-default: #0d1117;
+  --color-canvas-subtle: #161b22;
+  --color-border-default: #30363d;
+  --color-border-muted: #21262d;
+  --color-fg-default: #e6edf3;
+  --color-fg-muted: #7d8590;
+  --color-fg-subtle: #656d76;
+  --color-accent-fg: #2f81f7;
+  --color-accent-emphasis: #2f81f7;
+  --color-success-fg: #3fb950;
+  --color-success-emphasis: #238636;
+  --color-danger-fg: #f85149;
+  --color-danger-emphasis: #da3633;
+  --color-attention-fg: #d29922;
+  --color-attention-emphasis: #9e6a03;
+  --color-done-fg: #a5a5ff;
+  --color-done-emphasis: #8b949e;
+  --color-btn-bg: #21262d;
+  --color-btn-border: #30363d;
+  --color-btn-hover-bg: #30363d;
+  --color-btn-hover-border: #8b949e;
+  --color-btn-active-bg: #282e33;
+  --color-btn-primary-bg: #238636;
+  --color-btn-primary-hover-bg: #2ea043;
+  --color-btn-primary-border: #238636;
+  --color-input-bg: #0d1117;
+  --color-input-border: #30363d;
+  --color-input-focus-border: #2f81f7;
+  --shadow-small: 0 0 transparent;
+  --shadow-medium: 0 3px 6px #010409;
+  --shadow-large: 0 8px 24px #010409;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-fg-default);
+  background-color: var(--color-canvas-default);
+  transition: background-color 0.2s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Header */
+.header {
+  border-bottom: 1px solid var(--color-border-default);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-fg-default);
+}
+
+.octicon {
+  fill: var(--color-fg-default);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: var(--color-btn-bg);
+  border: 1px solid var(--color-btn-border);
+  border-radius: 6px;
+  color: var(--color-fg-default);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--color-btn-hover-bg);
+  border-color: var(--color-btn-hover-border);
+}
+
+.theme-toggle .moon-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+  display: block;
+}
+
+/* Add Todo Form */
+.add-todo-form {
+  margin-bottom: 24px;
+}
+
+.form-group {
+  display: flex;
+  gap: 12px;
+}
+
+.form-control {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--color-input-border);
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-fg-default);
+  background-color: var(--color-input-bg);
+  transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-input-focus-border);
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.12);
+}
+
+.form-control::placeholder {
+  color: var(--color-fg-muted);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid;
+  border-radius: 6px;
+  transition: all 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  text-decoration: none;
+}
+
+.btn:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: var(--color-btn-primary-bg);
+  border-color: var(--color-btn-primary-border);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-btn-primary-hover-bg);
+  border-color: var(--color-btn-primary-border);
+}
+
+.btn-secondary {
+  color: var(--color-fg-default);
+  background-color: var(--color-btn-bg);
+  border-color: var(--color-btn-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--color-btn-hover-bg);
+  border-color: var(--color-btn-hover-border);
+}
+
+.btn-sm {
+  padding: 3px 12px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* Todo Stats */
+.todo-stats {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: var(--color-canvas-subtle);
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+}
+
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stats-count {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-accent-fg);
+}
+
+.stats-label {
+  font-size: 12px;
+  color: var(--color-fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border-default);
+  margin-bottom: 16px;
+}
+
+.filter-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  color: var(--color-fg-muted);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.filter-tab:hover {
+  color: var(--color-fg-default);
+}
+
+.filter-tab.active {
+  color: var(--color-fg-default);
+  border-bottom-color: var(--color-accent-emphasis);
+}
+
+.filter-tab .octicon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Todo List */
+.todo-list-container {
+  min-height: 200px;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: var(--color-canvas-default);
+  transition: all 0.2s ease;
+}
+
+.todo-item:hover {
+  border-color: var(--color-border-muted);
+  box-shadow: var(--shadow-small);
+}
+
+.todo-item.completed {
+  opacity: 0.7;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--color-fg-muted);
+}
+
+.todo-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.todo-checkbox:hover {
+  border-color: var(--color-success-emphasis);
+}
+
+.todo-checkbox.checked {
+  background: var(--color-success-emphasis);
+  border-color: var(--color-success-emphasis);
+}
+
+.todo-checkbox.checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-fg-default);
+}
+
+.todo-text.editing {
+  display: none;
+}
+
+.todo-edit-input {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid var(--color-input-focus-border);
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-fg-default);
+  background-color: var(--color-input-bg);
+  display: none;
+}
+
+.todo-edit-input.editing {
+  display: block;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.todo-item:hover .todo-actions {
+  opacity: 1;
+}
+
+.todo-action {
+  padding: 4px 8px;
+  background: transparent;
+  border: 1px solid var(--color-border-default);
+  border-radius: 3px;
+  color: var(--color-fg-muted);
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.todo-action:hover {
+  color: var(--color-fg-default);
+  border-color: var(--color-border-muted);
+}
+
+.todo-action.delete:hover {
+  color: var(--color-danger-fg);
+  border-color: var(--color-danger-emphasis);
+}
+
+.todo-action.edit:hover {
+  color: var(--color-accent-fg);
+  border-color: var(--color-accent-emphasis);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--color-fg-muted);
+}
+
+.empty-state.hidden {
+  display: none;
+}
+
+.empty-icon {
+  opacity: 0.3;
+  margin-bottom: 16px;
+  fill: var(--color-fg-muted);
+}
+
+.empty-state h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-fg-default);
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: var(--color-fg-muted);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 8px;
+  }
+  
+  .header-title {
+    font-size: 24px;
+  }
+  
+  .form-group {
+    flex-direction: column;
+  }
+  
+  .todo-stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .todo-item {
+    padding: 8px 12px;
+  }
+  
+  .todo-actions {
+    opacity: 1;
+  }
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Loading state */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Focus styles for accessibility */
+.todo-checkbox:focus,
+.todo-action:focus,
+.filter-tab:focus {
+  outline: 2px solid var(--color-accent-fg);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border-default: #000000;
+    --color-fg-muted: #000000;
+  }
+  
+  [data-theme="dark"] {
+    --color-border-default: #ffffff;
+    --color-fg-muted: #ffffff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
