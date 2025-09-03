@@ -54,14 +54,13 @@ class TodoApp {
   }
   
   setupTheme() {
-    // Load saved theme or detect system preference
+    // Load saved theme or default to dark theme for GitHub look
     const savedTheme = localStorage.getItem('github-todo-theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    const initialTheme = savedTheme || 'dark'; // Default to dark theme
     
     this.setTheme(initialTheme);
     
-    // Listen for system theme changes
+    // Listen for system theme changes (only if no user preference is saved)
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem('github-todo-theme')) {
         this.setTheme(e.matches ? 'dark' : 'light');
