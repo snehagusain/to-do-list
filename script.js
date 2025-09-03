@@ -54,10 +54,9 @@ class TodoApp {
   }
   
   setupTheme() {
-    // Load saved theme or keep the initial dark theme set in HTML
+    // Load saved theme or use default dark theme
     const savedTheme = localStorage.getItem('github-todo-theme');
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const initialTheme = savedTheme || currentTheme || 'dark'; // Use saved, current, or default to dark
+    const initialTheme = savedTheme || 'dark'; // Default to dark theme
     
     this.setTheme(initialTheme);
     
@@ -71,13 +70,19 @@ class TodoApp {
   
   toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     this.setTheme(newTheme);
     localStorage.setItem('github-todo-theme', newTheme);
   }
   
   setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
+    if (theme === 'dark') {
+      // Remove attribute to use default dark theme
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      // Set light theme
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
   }
   
   generateId() {

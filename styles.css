@@ -1,42 +1,7 @@
 /* GitHub-inspired Todo List Styles */
 
 :root {
-  /* Light theme colors (GitHub default) */
-  --color-canvas-default: #ffffff;
-  --color-canvas-subtle: #f6f8fa;
-  --color-border-default: #d0d7de;
-  --color-border-muted: #d8dee4;
-  --color-fg-default: #24292f;
-  --color-fg-muted: #656d76;
-  --color-fg-subtle: #6e7781;
-  --color-accent-fg: #0969da;
-  --color-accent-emphasis: #0969da;
-  --color-success-fg: #1a7f37;
-  --color-success-emphasis: #2da44e;
-  --color-danger-fg: #cf222e;
-  --color-danger-emphasis: #da3633;
-  --color-attention-fg: #9a6700;
-  --color-attention-emphasis: #d1242f;
-  --color-done-fg: #8250df;
-  --color-done-emphasis: #8250df;
-  --color-btn-bg: #f6f8fa;
-  --color-btn-border: #d0d7de;
-  --color-btn-hover-bg: #f3f4f6;
-  --color-btn-hover-border: #c7c7c7;
-  --color-btn-active-bg: #ebeef2;
-  --color-btn-primary-bg: #2da44e;
-  --color-btn-primary-hover-bg: #2c974b;
-  --color-btn-primary-border: #1a7f37;
-  --color-input-bg: #ffffff;
-  --color-input-border: #d0d7de;
-  --color-input-focus-border: #0969da;
-  --shadow-small: 0 1px 0 rgba(31, 35, 40, 0.04);
-  --shadow-medium: 0 3px 6px rgba(140, 149, 159, 0.15);
-  --shadow-large: 0 8px 24px rgba(140, 149, 159, 0.2);
-}
-
-[data-theme="dark"] {
-  /* Dark theme colors (GitHub dark) */
+  /* Dark theme colors (GitHub dark) - Default */
   --color-canvas-default: #0d1117;
   --color-canvas-subtle: #161b22;
   --color-border-default: #30363d;
@@ -68,6 +33,41 @@
   --shadow-small: 0 0 transparent;
   --shadow-medium: 0 3px 6px #010409;
   --shadow-large: 0 8px 24px #010409;
+}
+
+[data-theme="light"] {
+  /* Light theme colors (GitHub light) */
+  --color-canvas-default: #ffffff;
+  --color-canvas-subtle: #f6f8fa;
+  --color-border-default: #d0d7de;
+  --color-border-muted: #d8dee4;
+  --color-fg-default: #24292f;
+  --color-fg-muted: #656d76;
+  --color-fg-subtle: #6e7781;
+  --color-accent-fg: #0969da;
+  --color-accent-emphasis: #0969da;
+  --color-success-fg: #1a7f37;
+  --color-success-emphasis: #2da44e;
+  --color-danger-fg: #cf222e;
+  --color-danger-emphasis: #da3633;
+  --color-attention-fg: #9a6700;
+  --color-attention-emphasis: #d1242f;
+  --color-done-fg: #8250df;
+  --color-done-emphasis: #8250df;
+  --color-btn-bg: #f6f8fa;
+  --color-btn-border: #d0d7de;
+  --color-btn-hover-bg: #f3f4f6;
+  --color-btn-hover-border: #c7c7c7;
+  --color-btn-active-bg: #ebeef2;
+  --color-btn-primary-bg: #2da44e;
+  --color-btn-primary-hover-bg: #2c974b;
+  --color-btn-primary-border: #1a7f37;
+  --color-input-bg: #ffffff;
+  --color-input-border: #d0d7de;
+  --color-input-focus-border: #0969da;
+  --shadow-small: 0 1px 0 rgba(31, 35, 40, 0.04);
+  --shadow-medium: 0 3px 6px rgba(140, 149, 159, 0.15);
+  --shadow-large: 0 8px 24px rgba(140, 149, 159, 0.2);
 }
 
 /* Base Styles */
